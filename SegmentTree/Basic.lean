@@ -183,7 +183,7 @@ match n with
 lemma len_add'_list (l : List ℕ) (x:ℕ) (n : ℕ) (h : n < l.length) :
 (add'_list l x n h).length = l.length :=
 by
-  induction n using Nat.strong_induction_on generalizing l with
+  induction n using Nat.strong_induction_on with
   | h n ih =>
     cases n with
     | zero => simp[add'_list]
@@ -219,7 +219,7 @@ lemma add'_list_eq (l : List ℕ) (x:ℕ) (n : ℕ) (h : n < l.length) (i:ℕ) (
 (hii : i  < l.length ) :
 (add'_list l x n h)[i] = l[i] :=
 by
-  induction n using Nat.strong_induction_on generalizing i with
+  induction n using Nat.strong_induction_on with
   | h n ih =>
     cases n with
     | zero => simp[add'_list]
@@ -457,7 +457,7 @@ termination_by (b-a)
 def my_query (st : segmentTree) (a : ℕ) (b : ℕ) (h: a≤b) (hb : b + st.orig_size -1 ≤ st.l.length)
 :=  query st (a+st.orig_size-1) (b+st.orig_size-1) (by omega) (by omega)
 
-theorem query_correctness_my_sum (st : segmentTree) (hv : proper st) (a : ℕ) (b : ℕ) (h: a≤b) (hb : b <= st.orig_size):
+theorem my_query_correctness_my_sum (st : segmentTree) (hv : proper st) (a : ℕ) (b : ℕ) (h: a≤b) (hb : b <= st.orig_size):
 my_query st a b h (by simp[proper_len_eq_2orig_size_minus_one st hv]; omega) =
 my_sum st a b h (by simp[proper_len_eq_2orig_size_minus_one st hv]; omega) (by cases hv; omega) :=
 by

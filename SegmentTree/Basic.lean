@@ -4,8 +4,7 @@ import SegmentTree
 
 /- We store a segment tree as an array (a list) of
 2*n−1 elements where n is the size of the original array.
-Each internal tree node with index i< n−1 contains sum of child nodes
-2*i+1 and 2*i+2.
+Each internal tree node with index i < n−1 contains sum of child nodes 2i+1, 2i+2
 The elements of the original array are in indices ranging from n-1 to 2*n-2.
 -/
 
